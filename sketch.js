@@ -23,10 +23,9 @@ function setup() {
 
 	//Create the Bodies Here.
 	tree1 = new Tree(900,400,500,500);
-	stone1 = new Stone(400,0,25);
+	stone1 = new Stone(400,25,25);
 	ground1 = new Ground(600,670,2400,50);
-	slingshot1 = new Slingshot(400,550)
-	rope1 = new Rope(stone1.body,slingshot1.body);
+	rope1 = new Rope(stone1.body,{x: 400, y: 25});
 	mango1 = new Mango(800,350,30);
 	mango2 = new Mango(900,350,45,45);
 	mango3 = new Mango(850,275,32,32);
@@ -63,15 +62,15 @@ function draw() {
 
 
 function mouseDragged(){
-    if (gameState!=="launched"){
+    // if (gameState!=="launched"){
         Matter.Body.setPosition(stone1.body, {x: mouseX, y: mouseY});
-    }
+    // }
 }
 
 
 function mouseReleased(){
-    rope.fly();
-    gameState = "launched";
+    rope1.fly();
+    // gameState = "launched";
 }
 
 

@@ -1,11 +1,12 @@
 class Rope {
-    constructor(bodyA,bodyB){
+    constructor(bodyA,pointB){
         var options = {
             bodyA: bodyA,
-            bodyB: bodyB,
+            pointB: pointB,
             stiffness: 0.04,
             length: 10
         }
+        this.pointB = pointB
         this.rope = Constraint.create(options);
         World.add(world,this.rope);
     }
@@ -15,9 +16,11 @@ class Rope {
     }
 
     display(){
-        var pointA = this.rope.bodyA.position;
-        var pointB = this.rope.bodyB.position;
-        strokeWeight(4);
-        line(pointA.x,pointA.y,pointB.x,pointB.y);
+        if(this.rope.bodyA){
+            var pointA = this.rope.bodyA.position;
+            var pointB = this.pointB;
+            strokeWeight(4);
+            line(pointA.x,pointA.y,pointB.x,pointB.y);
+        }
     }
 }
